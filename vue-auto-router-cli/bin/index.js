@@ -7,6 +7,7 @@ program.version(require('../package.json').version)
 
 // kkb init <name>
 program.command('init <name>')
+  .description('init project')
   .action(require('../libs/init'))
 
 program.command('refresh')
