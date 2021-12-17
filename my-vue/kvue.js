@@ -1,11 +1,39 @@
+/**
+ * 1、对 data 选项进行响应式处理
+ * 2、编辑模板
+ * 3、指令和事件
+ * 4、依赖收集
+ */
+class Kvue {
+  constructor(options) {
+    this.$options = options
+    this.$data = options.data
+    // 响应式
+    observe(this.$data)
+
+    // 代理下
+    proxy(this)
+
+    // compile 编辑模板
+    new Compile(options.el, this)
+  }
+
+}
+
+
 // 数据响应式
 function defineReactive(obj, key, val) {
   // 递归下，兼容 obj[key] = {a:10}
   observe(obj[key])
 
+  // 创建 Key、Dep、Watcher 的依赖
+  const dep = new Dep()
+
   Object.defineProperty(obj, key, {
     get() {
       console.log('get', key)
+      // 依赖收集
+      Dep.target && dep.addDep(Dep.target)
       return val
     },
     set(newVal) {
@@ -14,6 +42,10 @@ function defineReactive(obj, key, val) {
         // 如果 newVal 是对象，做响应式处理，比如 obj.key = {a:10}
         observe(newVal)
         val = newVal
+
+        // watcher 更新
+        // watchers.forEach(w => w.update())
+        dep.notify()
       }
     }
   })
@@ -71,7 +103,7 @@ class Compile {
     this.$el = document.querySelector(el)
 
     if (this.$el) {
-
+      this.compile(this.$el)
     }
   }
 
@@ -82,10 +114,22 @@ class Compile {
     childNodes.forEach(node => {
       if (node.nodeType === 1) {
         // 元素
-        console.log('元素', node.nodeName)
+        // console.log('元素', node.nodeName)
+        // 处理 指令和事件
+        const attrs = node.attributes
+        Array.from(attrs).forEach(attr => {
+          // k-xxx="abc"
+          const attrName = attr.name
+          const exp = attr.value
+          if (attrName.startsWith('k-')) {
+            const dir = attrName.substring(2)
+            this[dir] && this[dir](node, exp)
+          }
+        })
       } else if (this.isInter(node)) {
         // 文本 插值表达式
-        console.log('插值', node.textContent)
+        // console.log('插值', node.textContent)
+        this.compileText(node)
       }
 
       // 递归下
@@ -95,27 +139,86 @@ class Compile {
     })
   }
 
+  // 高级函数执行 dir
+  update(node, exp, dir) {
+    // 1、初始化
+    const fn = this[dir + 'Updater']
+    fn && fn(node, this.$vm[exp])
+
+    // 2、更新操作
+    new Watcher(this.$vm, exp, function (val) {
+      fn && fn(node, val)
+    })
+  }
+
+  // 对应的 k-text 的指令
+  text(node, exp) {
+    // node.textContent = this.$vm[exp]
+    this.update(node, exp, 'text')
+  }
+
+  textUpdater(node, value) {
+    node.textContent = value
+  }
+
+  // 编译 {{xxx}}文本
+  compileText(node) {
+    // node.textContent = this.$vm[RegExp.$1]
+    this.update(node, RegExp.$1, 'text')
+  }
+
+  // 对应的 k-html 的指令
+  html(node, exp) {
+    // node.innerHTML = this.$vm[exp]
+    this.update(node, exp, 'html')
+  }
+
+  htmlUpdater(node, value) {
+    node.innerHTML = value
+  }
+
   // 是否插值表达式
   isInter(node) {
-    return node.nodeType === 3 && /\{\{.*\}\}/.test(node.textContent)
+    return node.nodeType === 3 && /\{\{(.*)\}\}/.test(node.textContent)
   }
 }
 
-/**
- * 1、对 data 选项进行响应式处理
- * 2、编辑模板
- */
-class Kvue {
-  constructor(options) {
-    this.$options = options
-    this.$data = options.data
-    // 响应式
-    observe(this.$data)
+// 监督器：负责依赖更新，有多少个变量就有多少个 watcher
+// const watchers = []
 
-    // 代理下
-    proxy(this)
+class Watcher {
+  constructor(vm, key, updateFn) {
+    this.vm = vm
+    this.key = key
+    this.updateFn = updateFn
 
-    // compile 编辑模板
+    // watchers.push(this)
+    Dep.target = this
+    // 相当于调用了一次 key 的 get 方法进行依赖收齐
+    this.vm[this.key]
+    Dep.target = null
   }
 
+  // 被 Dep 调用的
+  update() {
+    // 执行实际的更新操作
+    this.updateFn.call(this.vm, this.vm[this.key])
+  }
+}
+
+// 实现 Dep，有多少个 key 就有多少个 dep
+class Dep {
+  constructor() {
+    this.deps = []
+  }
+
+  addDep(dep) {
+    // 这里的 dep 其实就是 watcher
+    this.deps.push(dep)
+  }
+
+  notify() {
+    // 这里的 dep 其实就是 watcher
+    this.deps.forEach(dep => dep.update())
+  }
 }
