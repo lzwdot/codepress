@@ -43,6 +43,7 @@ export class Observer {
     this.value = value
     this.dep = new Dep()
     this.vmCount = 0
+    // 给 Ob 实例定义一个__ob__ 保存当前实例
     def(value, '__ob__', this)
     // 数组处理
     if (Array.isArray(value)) {
