@@ -14,6 +14,8 @@ const idToTemplate = cached(id => {
   return el && el.innerHTML
 })
 
+
+// 扩展 $mount
 const mount = Vue.prototype.$mount
 Vue.prototype.$mount = function (
   el?: string | Element,
@@ -29,9 +31,13 @@ Vue.prototype.$mount = function (
     return this
   }
 
+  // 用户配置的选项
   const options = this.$options
   // resolve template/el and convert to render function
+
+  // 查找 render 选项
   if (!options.render) {
+    // 获取 template 选项
     let template = options.template
     if (template) {
       if (typeof template === 'string') {
@@ -56,12 +62,16 @@ Vue.prototype.$mount = function (
     } else if (el) {
       template = getOuterHTML(el)
     }
+    // 以上得出优先级 render->template->$el
+
+    // 获取到 html 模板字符后，执行编译过程
     if (template) {
       /* istanbul ignore if */
       if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
         mark('compile')
       }
 
+      // 编译 template 为 render 函数
       const { render, staticRenderFns } = compileToFunctions(template, {
         outputSourceRange: process.env.NODE_ENV !== 'production',
         shouldDecodeNewlines,
@@ -79,6 +89,8 @@ Vue.prototype.$mount = function (
       }
     }
   }
+
+  // 执行挂载
   return mount.call(this, el, hydrating)
 }
 
