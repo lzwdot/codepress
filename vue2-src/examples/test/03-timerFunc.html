@@ -17,10 +17,8 @@
             el: '#demo',
             data: { foo: '0' },
             mounted() {
-                
-
                 this.foo = Math.random()
-                console.log('1:' + this.foo); 
+                console.log('1:' + this.foo);
                 this.foo = Math.random()
                 console.log('2:' + this.foo);
                 this.foo = Math.random()
@@ -34,7 +32,7 @@
                 Promise.resolve().then(() => {
                     console.log('promise p1.innerHTML:' + p1.innerHTML)
                 })
-                
+
                 // [cb, flushSchexxxx]
                 this.$nextTick(() => {
                     // 这里才是最新的值

@@ -10,6 +10,7 @@ export let isUsingMicroTask = false
 const callbacks = []
 let pending = false
 
+// 将 callback 中的回调函数都执行一遍
 function flushCallbacks () {
   pending = false
   const copies = callbacks.slice(0)
@@ -84,6 +85,7 @@ if (typeof Promise !== 'undefined' && isNative(Promise)) {
   }
 }
 
+// 这就是平时我们使用的 $nextTick 方法
 export function nextTick (cb?: Function, ctx?: Object) {
   let _resolve
   callbacks.push(() => {
@@ -99,6 +101,7 @@ export function nextTick (cb?: Function, ctx?: Object) {
   })
   if (!pending) {
     pending = true
+    // 异步执行 callbacks 中的任务
     timerFunc()
   }
   // $flow-disable-line

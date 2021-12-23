@@ -103,6 +103,10 @@ export default class Watcher {
     let value
     const vm = this.vm
     try {
+      // this.getter 就是 expOrFn 更新函数，也就是 updateComponent，真是就是
+      //  updateComponent = () => {
+      //     vm._update(vm._render(), hydrating)
+      //  }
       value = this.getter.call(vm, vm)
     } catch (e) {
       if (this.user) {
@@ -178,8 +182,10 @@ export default class Watcher {
    * Scheduler job interface.
    * Will be called by the scheduler.
    */
+  // watcher 真正执行更新的函数
   run () {
     if (this.active) {
+      // 调用 watcher 的 get 方法
       const value = this.get()
       if (
         value !== this.value ||
