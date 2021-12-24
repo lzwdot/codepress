@@ -34,6 +34,7 @@ const hooks = ['create', 'activate', 'update', 'remove', 'destroy']
 
 function sameVnode (a, b) {
   return (
+    // key 是判断两个相同节点的必要条件
     a.key === b.key && (
       (
         a.tag === b.tag &&
