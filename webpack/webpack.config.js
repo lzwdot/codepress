@@ -89,9 +89,31 @@ module.exports = {
       //     }
       //   ]
       // }
+
+      {
+        test: /\.js$/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              '@babel/preset-env' // 只做语法转换，es6+ -> es5
+            ]
+          }
+        }
+      }
     ]
   },
-
+  // 生产环境是否开启，根据具体需要，一把如果有监控系统，建议开启
+  devtool: 'source-map',
+  devServer: {
+    port: 8080, // 端口
+    open: true, // 自动打开浏览器
+    proxy: { // 代理访问
+      '/api': {
+        target: 'http://localhost:8090/'
+      }
+    }
+  },
   // plugin
   plugins: [
     new CleanWebpackPlugin(),

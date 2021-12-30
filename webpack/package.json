@@ -6,16 +6,23 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --config ./webpack.config.js",
-    "mpa": "webpack --config ./webpack.mpa.config.js"
+    "mpa": "webpack --config ./webpack.mpa.config.js",
+    "serve": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
     "autoprefixer": "^10.4.0",
+    "axios": "^0.24.0",
+    "axois": "0.0.1-security",
+    "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
     "cssnano": "^5.0.14",
+    "express": "^4.17.2",
     "file-loader": "^6.2.0",
     "glob": "^7.2.0",
     "html-webpack-plugin": "^5.5.0",

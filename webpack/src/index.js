@@ -1,11 +1,12 @@
 import less from './css/index.less'
-// import pic from './images/index.jpg'
+import axios from "axios";
 
-// console.log(pic)
-//
-// const img = new Image()
-// img.src = pic
-//
-// document.body.appendChild(img)
+// axios.get('/api/info').then(res => {
+//   console.log(res)
+// })
 
-// console.log('hello index.js')
+const arr = [new Promise(()=>{}), new Promise(()=>{})]
+
+arr.forEach(item=>{
+
+})
