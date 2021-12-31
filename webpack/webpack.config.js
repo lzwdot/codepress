@@ -2,6 +2,7 @@ const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const miniCssExtractPlugin = require('mini-css-extract-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const texWebpackPlugin = require('./myPlugins/txt-webpack-plugin')
 
 // 默认配置
 module.exports = {
@@ -93,12 +94,7 @@ module.exports = {
       {
         test: /\.js$/,
         use: {
-          loader: "babel-loader",
-          options: {
-            presets: [
-              '@babel/preset-env' // 只做语法转换，es6+ -> es5
-            ]
-          }
+          loader: "babel-loader"
         }
       }
     ]
@@ -116,6 +112,7 @@ module.exports = {
   },
   // plugin
   plugins: [
+    new texWebpackPlugin(),
     new CleanWebpackPlugin(),
     new htmlWebpackPlugin({
       template: './src/index.html',

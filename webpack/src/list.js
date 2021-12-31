@@ -1,4 +1,4 @@
-import less from './css/index.less'
+// import less from './css/index.less'
 // import pic from './images/index.jpg'
 
 // console.log(pic)
