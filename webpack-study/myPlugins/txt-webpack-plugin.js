@@ -21,7 +21,7 @@ module.exports = class texWebpackPlugin {
 
     // 同步钩子使用 tap, 没有 cb 了
     compiler.hooks.compile.tap('texWebpackPlugin', (compilation) => {
-      console.log(compilation)
+      // console.log(compilation)
     })
   }
 }
