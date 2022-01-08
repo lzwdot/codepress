@@ -32,8 +32,9 @@ module.exports = {
       //...
       {
         test: /\.css$/,
+        include: path.resolve(__dirname, './src'),
         // 多个 loader 情况下，执行顺序是自后往前的
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
       },
       // {
       //       //   test: /\.jpg$/,
@@ -42,6 +43,7 @@ module.exports = {
       //...
       {
         test: /\.less$/,
+        include: path.resolve(__dirname, './src'),
         use: [miniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader']
       },
       // {
@@ -50,6 +52,7 @@ module.exports = {
       // },
       {
         test: /\.(png|jpe?g|gif|webp)$/,
+        include: path.resolve(__dirname, './src'),
         // use: {
         //   loader: 'url-loader',
         //   options: {
@@ -63,6 +66,7 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|svg|eot)$/,
+        include: path.resolve(__dirname, './src'),
         // 使用 webpack 4.x 的方法
         // use: {
         //   loader: 'file-loader',
@@ -93,14 +97,18 @@ module.exports = {
 
       {
         test: /\.js$/,
+        include: path.resolve(__dirname, './src'),
         use: {
-          loader: "babel-loader"
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true
+          }
         }
       }
     ]
   },
   // 生产环境是否开启，根据具体需要，一把如果有监控系统，建议开启
-  devtool: 'source-map',
+  devtool: 'inline-source-map', //  source-map 打包比较慢 https://webpack.docschina.org/configuration/devtool/#root
   devServer: {
     port: 8080, // 端口
     open: true, // 自动打开浏览器

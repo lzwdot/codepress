@@ -1,4 +1,4 @@
-// import less from './css/index.less'
+import less from './css/index.less'
 // import list from './list'
 // import axios from "axios";
 
