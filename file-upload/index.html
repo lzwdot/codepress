@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大文件上传</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        input[type="file"] {
+            display: none;
+        }
+
+        .container, .row {
+            margin-top: 20px;
+        }
+
+        .input-group {
+            display: block;
+            padding: 10px;
+            min-height: 200px;
+            border: 1px #ccc dashed;
+        }
+
+        .disable,
+        .loading {
+            pointer-events: none;
+            background-color: #ccc;
+        }
+
+        .list-group,
+        .spinner-border,
+        .img-wrap {
+            display: none;
+        }
+
+        .loading .spinner-border {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col" id="upload1">
+            <b>文件上传【form-data，缩图图处理】</b>
+            <div class="input-group">
+                <label class="btn btn-primary" for="inputGroupFile01">
+                    选择文件
+                </label>
+                <!--  accept=".png,.jpg,.jpeg" 限定文件格式 -->
+                <input type="file" class="form-control" id="inputGroupFile01">
+                <button type="button" class="btn btn-success">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    上传到服务器
+                </button>
+                <p><small class="text-muted">只能上传 png/jgp/jpeg 格式图片，大小不超过 2MB</small></p>
+                <ul class="list-group">
+                    <!--<li class="list-group-item d-flex justify-content-between align-items-center">-->
+                    <!--    test-->
+                    <!--    <span class="badge bg-primary rounded-pill">test</span>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col" id="upload2">
+            <b>文件上传【base64，缩略图处理】，只适合图片</b>
+            <div class="input-group">
+                <label class="btn btn-primary" for="inputGroupFile02">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    上传图片
+                </label>
+                <input type="file" class="form-control" id="inputGroupFile02" accept=".png,.jpg,.jpeg">
+                <p><small class="text-muted">只能上传 png/jgp/jpeg 格式图片，大小不超过 2MB</small></p>
+                <div class="img-wrap">
+                    <img src="..." class="img-thumbnail" alt="...">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="./node_modules/axios/dist/axios.min.js"></script>
+<script src="./node_modules/qs/dist/qs.js"></script>
+<script src="./node_modules/spark-md5/spark-md5.min.js"></script>
+
+<script src="./js/instance.js"></script>
+<script src="./js/upload.js"></script>
+</body>
+</html>
