@@ -3,7 +3,6 @@ const app = express()
 const multer = require('multer')
 const bodyParser = require('body-parser')
 const sparkMD5 = require('spark-md5')
-const urlib = require('url')
 
 //引入 path 和 fs
 const path = require('path')
