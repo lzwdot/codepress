@@ -12,8 +12,9 @@
   <!--      v-model:name="name"-->
   <!--      v-model:age="age"-->
   <!--  ></child>-->
-<!--  <watch></watch>-->
-  <get-instance></get-instance>
+  <!--  <watch></watch>-->
+  <!--  <get-instance></get-instance>-->
+  <jsx-demo></jsx-demo>
 </template>
 
 <script>
@@ -29,13 +30,15 @@
 
 // import Child from "@/components/Child";
 import {reactive, toRefs} from "vue";
+import JsxDemo from "@/components/JsxDemo.jsx";
 // import Watch from "@/components/Watch";
-import GetInstance from "@/components/GetInstance";
+// import GetInstance from "@/components/GetInstance";
 
 export default {
   name: 'App',
   components: {
-    GetInstance,
+    JsxDemo
+    // GetInstance,
     // Watch
     // Child
     // MousePosition,
