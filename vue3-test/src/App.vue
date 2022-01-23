@@ -1,7 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <!--  <HelloWorld msg="Welcome to Your Vue.js App"/>-->
-  <!--  <Ref/>-->
+  <!--    <Ref/>-->
   <!--  <toRef/>-->
   <!--  <to-refs></to-refs>-->
   <!--  <why-ref></why-ref>-->
@@ -14,7 +14,14 @@
   <!--  ></child>-->
   <!--  <watch></watch>-->
   <!--  <get-instance></get-instance>-->
-  <jsx-demo></jsx-demo>
+  <!--  <jsx-demo></jsx-demo>-->
+  <!--  或 -->
+  <!--  <JsxDemo></JsxDemo>-->
+  <!--  <tabs-template></tabs-template>-->
+  <!--  <tabs-jsx></tabs-jsx>-->
+  <!--  <scoped-slot-template></scoped-slot-template>-->
+  <!--  <scoped-slot-jsx></scoped-slot-jsx>-->
+  <script-setup></script-setup>
 </template>
 
 <script>
@@ -30,14 +37,20 @@
 
 // import Child from "@/components/Child";
 import {reactive, toRefs} from "vue";
-import JsxDemo from "@/components/JsxDemo.jsx";
+// import JsxDemo from "@/components/JsxDemo.jsx";
 // import Watch from "@/components/Watch";
 // import GetInstance from "@/components/GetInstance";
+
+// import TabsTemplate from './components/tabs-template/Index'
+// import TabsJsx from './components/tabs-jsx/Index'
+// import ScopedSlotTemplate from './components/scoped-slot-template/Index'
+// import ScopedSlotJsx from './components/scoped-slot-jsx/Index'
+import ScriptSetup from './components/script-setup/Index'
 
 export default {
   name: 'App',
   components: {
-    JsxDemo
+    // JsxDemo,
     // GetInstance,
     // Watch
     // Child
@@ -47,7 +60,12 @@ export default {
     // ToRefs,
     // ToRef,
     // Ref
-    // HelloWorld
+    // HelloWorld,
+    // TabsTemplate,
+    // TabsJsx,
+    // ScopedSlotTemplate,
+    // ScopedSlotJsx,
+    ScriptSetup
   },
   setup() {
     const state = reactive({

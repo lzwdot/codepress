@@ -5,7 +5,7 @@ export default defineComponent({
   props: ['a'],
   setup(props) {
     const render = () => {
-      return <p>Child {props.a}</p>
+      return <p>Jsx Child {props.a}</p>
     }
     return render
   }
