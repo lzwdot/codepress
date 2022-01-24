@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import BaseUse from './components/baseUse'
-import JSXBaseDemo from "./components/baseUse/JSXBaseDemo";
+// import JSXBaseDemo from "./components/baseUse/JSXBaseDemo";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
       {/*  </a>*/}
       {/*</header>*/}
       <BaseUse/>
-      <JSXBaseDemo/>
+      {/*<JSXBaseDemo/>*/}
     </div>
   );
 }
