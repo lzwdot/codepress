@@ -1,6 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import BaseUse from './components/baseUse'
+import AdvanceUse from "./components/advanceUse";
+import React from "react";
+import Immutable from "immutable";
+
 // import JSXBaseDemo from "./components/baseUse/JSXBaseDemo";
 
 function App() {
@@ -21,9 +25,17 @@ function App() {
       {/*  </a>*/}
       {/*</header>*/}
       <BaseUse/>
+      <AdvanceUse/>
       {/*<JSXBaseDemo/>*/}
     </div>
   );
 }
+
+const map1 = Immutable.Map({a: 1, b: 2, c: 3})
+const map2 = map1.set('b', 50)
+console.log(map1.get('b')) // 2
+console.log(map2.get('b')) // 50
+
+
 
 export default App;

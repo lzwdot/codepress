@@ -3,6 +3,8 @@ import React from "react";
 import ConditionDemo from "./ConditionDemo";
 import EventDemo from "./EventDemo";
 import FormDemo from "./FormDemo";
+import PropsDemo from "./PropsDemo";
+import StateDemo from "./StateDemo";
 
 class BaseUseDemo extends React.Component {
   constructor(props) {
@@ -12,9 +14,11 @@ class BaseUseDemo extends React.Component {
   render() {
     return <div>
       {/*<JSXBaseDemo/>*/}
-      <ConditionDemo/>
-      <EventDemo />
-      <FormDemo />
+      {/*<ConditionDemo/>*/}
+      {/*<EventDemo/>*/}
+      {/*<FormDemo/>*/}
+      {/*<PropsDemo/>*/}
+      {/*<StateDemo/>*/}
     </div>
   }
 
