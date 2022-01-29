@@ -28,21 +28,31 @@ class StateDemo extends React.Component {
     // 操作数组、对象的常用形式
 
     // 第三， setState 可能是异步更新（有可能是同步更新）------------------------------------------
-    // this.setState({
-    //   count: this.state.count + 1
-    // }, () => {
-    //   // 类似 Vue $nextTick
-    //   console.log('count by callback', this.state.count) // 回调函数拿到最新值
-    // })
-    // console.log('count', this.state.count) // 异步的，拿不到最新值
+
+    // 开始：处于 batchUpdate
+    // isBatchingUpdates = true
+    this.setState({
+      count: this.state.count + 1
+    }, () => {
+      // 类似 Vue $nextTick
+      console.log('count by callback', this.state.count) // 回调函数拿到最新值
+    })
+    console.log('count', this.state.count) // 异步的，拿不到最新值
+    // 结束
+    // isBatchingUpdates = false
 
     // setTimeout 中 setState 是同步的
-    // setTimeout(() => {
-    //   this.setState({
-    //     count: this.state.count + 1
-    //   })
-    //   console.log('count in setTimeout', this.state.count)
-    // })
+    // 开始：处于 batchUpdate
+    // isBatchingUpdates = true
+    setTimeout(() => {
+      // 此时 isBatchingUpdates 是 false
+      this.setState({
+        count: this.state.count + 1
+      })
+      console.log('count in setTimeout', this.state.count)
+    })
+    // 结束
+    // isBatchingUpdates = false
 
     // 自己定义的 DOM 事件，setState 是同步的，在 componentDidMount 中
 

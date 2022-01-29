@@ -5,12 +5,15 @@ import AdvanceUse from "./components/advanceUse";
 import React from "react";
 import Immutable from "immutable";
 import ReduxDemo from './components/reduxUse'
+import FaqDemo from "./components/faqDemo";
+import ReactHooks from "./components/reactHooks";
 
 // import JSXBaseDemo from "./components/baseUse/JSXBaseDemo";
 
 function App() {
   return (
     <div className="App">
+      <p>React App</p>
       {/*<header className="App-header">*/}
       {/*  <img src={logo} className="App-logo" alt="logo" />*/}
       {/*  <p>*/}
@@ -25,18 +28,22 @@ function App() {
       {/*    Learn React*/}
       {/*  </a>*/}
       {/*</header>*/}
-      <BaseUse/>
-      <AdvanceUse/>
+      {/*<BaseUse/>*/}
+      {/*<AdvanceUse/>*/}
       {/*<JSXBaseDemo/>*/}
-      <ReduxDemo />
+      {/*<ReduxDemo />*/}
+      {/*<FaqDemo/>*/}
+      <ReactHooks />
     </div>
   );
 }
 
-const map1 = Immutable.Map({a: 1, b: 2, c: 3})
-const map2 = map1.set('b', 50)
-console.log(map1.get('b')) // 2
-console.log(map2.get('b')) // 50
+// const map1 = Immutable.Map({a: 1, b: 2, c: 3})
+// const map2 = map1.set('b', 50)
+// console.log(map1.get('b')) // 2
+// console.log(map2.get('b')) // 50
+
 
 
 export default App;
+

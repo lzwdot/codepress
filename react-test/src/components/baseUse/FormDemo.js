@@ -79,6 +79,9 @@ class FormDemo extends React.Component {
       gender: e.target.value
     })
   }
+
+  componentWillUnmount() {
+  }
 }
 
 export default FormDemo
