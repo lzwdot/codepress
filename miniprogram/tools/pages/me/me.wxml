@@ -1,0 +1,17 @@
+  <view class="me-bg bg-mauve">   
+    <view class="cu-avatar xl round">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view class="margin-top-sm">
+      <open-data type="userNickName" lang="zh_CN"></open-data>
+    </view>
+  </view>
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow">
+      <view class="content" bindtap="github">
+        <text class="cuIcon-github text-grey"></text>
+        <text class="text-grey">GitHub</text>
+      </view>
+    </view>
+  </view>
+  <view class="cu-tabbar-height"></view>

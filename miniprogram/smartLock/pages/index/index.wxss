@@ -1,0 +1,7 @@
+/**index.wxss**/
+.image-wrap,.page__desc{     
+  text-align: center;  
+}
+image{
+  width: 300rpx;  
+}

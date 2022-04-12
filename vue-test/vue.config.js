@@ -1,4 +1,5 @@
 const path = require('path')
+const UploadSourceMapWebpackPlugin = require('../../h3_manager/hcloud-monitor-sdk/src/plugins/uploadSourceMapWebpackPlugin');
 
 module.exports = {
   lintOnSave: false,
@@ -26,6 +27,9 @@ module.exports = {
     } else {
       config.name = '生产'
     }
+    config.plugins.push(
+      new UploadSourceMapWebpackPlugin({ apiKey: 'eb21f9a0a85d11ecb9287db133539515' }),
+    )
   },
   // 还是 webpack
   chainWebpack(config) {

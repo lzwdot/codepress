@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="page">
+	<view class="page__hd">
+			<view class="weui-flex">
+				<view class="weui-flex__item image-wrap">
+					<image src="../../images/logo.jpg" mode="widthFix"></image>
+				</view>
+			</view>
+	</view>
+	<view class="page__bd page__bd_spacing">
+		<button class="weui-btn" type="primary" bindtap="toMiniProgram" data-appid="wxaab37a6503fe1b50">智能锁开锁秘钥</button>
+		<button class="weui-btn" type="default" bindtap="toMiniProgram" data-appid="">其他</button>
+	</view>
+</view>

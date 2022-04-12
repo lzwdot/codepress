@@ -1,0 +1,20 @@
+/* pages/colorfont/colorfont.wxss */
+.weui-form{
+    height: 100vh;
+}
+
+.weui-form__opr-area .weui-btn{
+    margin:auto 32px;
+    width: auto;
+}
+.weui-form__desc{
+    color: var(--weui-LINK);
+}
+.weui-cells__title{
+    font-size: 36rpx;
+    height: 80rpx;
+}
+.weui-form__control-area{   
+    margin-bottom:0;
+    flex:initial    
+}

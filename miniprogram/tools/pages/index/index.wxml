@@ -1,0 +1,21 @@
+<view class="page">
+	<view class="page__hd">
+		<view class="page__title">工具大全</view>
+	</view>
+
+	<view class="page__bd page__bd_spacing">
+		<view class='nav-list'>
+			<navigator  url="/pages/colorfont/colorfont" class="nav-li bg-blue">
+			<view class="nav-title">彩色昵称</view>
+			<view class="nav-name"></view>
+			<text class='cuIcon-font'></text>
+			</navigator>
+			<navigator  class="nav-li bg-grey">
+			<view class="nav-title">尽情期待</view>
+			<view class="nav-name"></view>
+			<text class='cuIcon-more'></text>
+			</navigator>
+		</view>
+		<view class='cu-tabbar-height'></view>
+	</view>
+</view>

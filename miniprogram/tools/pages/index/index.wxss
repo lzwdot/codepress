@@ -1,0 +1,22 @@
+.page__title{
+  color: var(--weui-PURPLE);
+  font-weight: bold;
+}
+
+.placeholder {
+  margin: 5px;  
+  padding-top: 1em; 
+  text-align: center;  
+  background-color: var(--weui-BG-0); 
+  font-size: 36rpx;
+  color: var(--weui-WHITE); 
+  height: 5em;
+  box-sizing: border-box;
+}
+.color-font{
+  background-color: var(--weui-BLUE);
+}
+.weui-grid__label{
+  margin-top: 0 !important;
+  color: var(--weui-WHITE);
+}
