@@ -28,7 +28,7 @@ module.exports = {
       config.name = '生产'
     }
     config.plugins.push(
-      new UploadSourceMapWebpackPlugin({ apiKey: 'eb21f9a0a85d11ecb9287db133539515' }),
+      new UploadSourceMapWebpackPlugin({ apiKey: 'eb21f9a0a85d11ecb9287db133539515', env: process.env.VUE_APP_ENV }),
     )
   },
   // 还是 webpack
